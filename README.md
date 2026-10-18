@@ -12,4 +12,4 @@ Automated mbox archive. Updated daily via GitHub Actions.
 
 ## Viewer
 
-Browse these archives at [r-mailing-lists.thecoatlessprofessor.com](https://r-mailing-lists.thecoatlessprofessor.com/lists/r-sig-s/)
+This list is not shown on [r-mailing-lists.thecoatlessprofessor.com](https://r-mailing-lists.thecoatlessprofessor.com/): apart from nine messages from 2001, its archive holds only spam.
