@@ -1,0 +1,222 @@
+From maechler at stat.math.ethz.ch  Wed Apr 25 18:06:19 2001
+From: maechler at stat.math.ethz.ch (Martin Maechler)
+Date: Wed, 25 Apr 2001 18:06:19 +0200
+Subject: [R-S] Must read: ``RSMethods''
+Message-ID: <15078.62971.672948.80335@gargle.gargle.HOWL>
+
+       [This message is just an excuse to put something useful into the
+        mailing list archive such that you don't get an error when looking
+        for the archive..]
+
+I think a `must read' for all of us is the information found
+at  http://www.omegahat.org/RSMethods/
+
+>>   S Language Methods and Classes
+>> 
+>>   Overview
+>> 
+>>   This package provides software for R that implements S-language formal
+>>   classes and methods. Software written using this package can work
+>>   compatibly in R or in current versions of S-Plus.
+
+by John Chambers himself.
+
+Martin
+
+
+From pgilbert at bank-banque-canada.ca  Wed Apr 25 20:19:22 2001
+From: pgilbert at bank-banque-canada.ca (Paul Gilbert)
+Date: Wed, 25 Apr 2001 14:19:22 -0400
+Subject: [R-S] S/R neutral
+Message-ID: <3AE7152A.7FF87A9D@bank-banque-canada.ca>
+
+>I think it would be very useful to have one or more documents
+>clearly describing the differences and techniques for writing
+>implementation-neutral S code. For instance, a document, say a HOWTO,
+>describing techniques for ...
+
+Before writing documentation I think it would be good to work out a
+reasonable common strategy for supporting "neutral" code. After several
+years of making my S (Splus 3.3) code work also in R I have just
+converted to making my R code work also in S. I did this conversion
+mainly because of the package support in R. The mechanisms for checking
+documentation and running tests are very useful. In S I mimic R by using
+some scripts to run tests in the tests directory, but I have not tried
+to integrate the help with any newer Splus help systems.
+
+I find making "R code work also in Splus" to be much cleaner in several
+respects than making "Splus code work also in R." I think this is
+because it seems reasonable to tell R users to upgrade, while backwards
+compatability is more of an issue in Splus (perhaps especially for me
+since I have not converted to using the newer classes and methods in S).
+
+There are many more detailed issues, but I think everyone could benefit
+from a common general strategy, so perhaps we could try to work that out
+first.
+
+Paul Gilbert
+
+
+
+From jmc at research.bell-labs.com  Thu Apr 26 17:47:46 2001
+From: jmc at research.bell-labs.com (John Chambers)
+Date: Thu, 26 Apr 2001 11:47:46 -0400 (EDT)
+Subject: [R-S] The SLanguage package
+Message-ID: <200104261547.LAA27474@jessie.research.bell-labs.com>
+
+This package, part of the Omegahat software, is a first cut at
+providing tools to help write compatible S language software.
+
+What exists currently are R and S-plus versions of a package/library
+with some functions designed to smooth over a few of the
+inconsistencies (e.g., different argument names) and patch a few holes
+(facilities defined in one implementation but not in the other).
+
+The versions currently available are definitely early, trying to
+suggest that this is a useful exercise but not at all implying any
+final decisions.  An overview and tar archives are available at
+  http://www.omegahat.org/SLanguage/
+
+The web documentation says a little about the underlying strategy.
+
+Several areas are in process but not yet included:
+
+-  C programming tools (e.g., header files) to bridge some of the
+   incompatibilities at the C level.
+
+-  documentation tools.  Mainly this will use the work on XML-based
+   documentation going on in parallel.
+
+-  tools for organizing compatible packages.  This will help
+   programmers get started with their own packages, such that they can
+   maintain compatible source and generate copies of their package for
+   both S-Plus and R.  
+
+The material now available is too incomplete to recommend to general
+users, but readers of r-sig-s might find it worth looking at.  In any
+case, comments and suggestions are very much needed.
+
+John
+
+-- 
+John M. Chambers                  jmc at bell-labs.com
+Bell Labs, Lucent Technologies    office: (908)582-2681
+700 Mountain Avenue, Room 2C-282  fax:    (908)582-3340
+Murray Hill, NJ  07974            web: http://www.cs.bell-labs.com/~jmc
+
+
+From pgilbert at bank-banque-canada.ca  Mon Apr 30 18:20:56 2001
+From: pgilbert at bank-banque-canada.ca (Paul Gilbert)
+Date: Mon, 30 Apr 2001 12:20:56 -0400
+Subject: [R-S] The SLanguage package
+References: <200104261547.LAA27474@jessie.research.bell-labs.com>
+Message-ID: <3AED90E8.9B8BA86C@bank-banque-canada.ca>
+
+John
+
+I have never had very good luck redefining functions in order to resolve
+inconsistencies between various versions of R and S, as you do in
+SLanguage (e.g. get, exists).  First, it is difficult to tests all the
+variants on all the different platforms to make sure something has not
+been broken, and second, future versions always have a habit of changing
+something which makes maintenance very difficult. Instead, it seems
+better to define a new function which has a consistent behaviour.
+
+For example, unlink() has a different behaviour with directories in
+different versions of Splus. R has added the argument recursive=FALSE.
+It is possible to redefine unlink in Splus to support the recursive
+argument, but the default behaviour will then be changed in some
+versions of Splus and something is certain to break. Instead, it seems
+better to defined a new function (maybe SRunlink) which has a consistent
+behaviour and can be use instead of unlink in other code.
+
+This implies that users of these tools will be designing their code to
+run in both S and R, rather than simply porting in the simplest possible
+manner, but in the end I think this distinction will be necessary
+anyway.
+
+Paul Gilbert
+
+
+
+From jmc at research.bell-labs.com  Mon Apr 30 22:27:16 2001
+From: jmc at research.bell-labs.com (John Chambers)
+Date: Mon, 30 Apr 2001 16:27:16 -0400 (EDT)
+Subject: [R-S] The SLanguage package
+References: <200104261547.LAA27474@jessie.research.bell-labs.com> <3AED90E8.9B8BA86C@bank-banque-canada.ca>
+Message-ID: <200104302027.QAA23833@jessie.research.bell-labs.com>
+
+> From: Paul Gilbert <pgilbert at bank-banque-canada.ca>
+> Date: Mon, 30 Apr 2001 12:20:56 -0400
+> 
+> John
+> 
+> I have never had very good luck redefining functions in order to resolve
+> inconsistencies between various versions of R and S, as you do in
+> SLanguage (e.g. get, exists).  First, it is difficult to tests all the
+> variants on all the different platforms to make sure something has not
+> been broken, and second, future versions always have a habit of changing
+> something which makes maintenance very difficult. Instead, it seems
+> better to define a new function which has a consistent behaviour.
+>
+> For example, unlink() has a different behaviour with directories in
+> different versions of Splus. R has added the argument recursive=FALSE.
+> It is possible to redefine unlink in Splus to support the recursive
+> argument, but the default behaviour will then be changed in some
+> versions of Splus and something is certain to break. Instead, it seems
+> better to defined a new function (maybe SRunlink) which has a consistent
+> behaviour and can be use instead of unlink in other code.
+>
+> This implies that users of these tools will be designing their code to
+> run in both S and R, rather than simply porting in the simplest possible
+> manner, but in the end I think this distinction will be necessary
+> anyway.
+> 
+> Paul Gilbert
+> 
+> _______________________________________________
+> R-sig-S mailing list
+> R-sig-S at stat.math.ethz.ch
+> http://www.stat.math.ethz.ch/mailman/listinfo/r-sig-s
+> 
+
+I sympathize, but on the other hand we should try to do as much as
+possible to make _most_ cases work easily for the programmer.
+
+The bottom line is that we don't want just a few, super-industrious
+people to write compatible code.  Yes, for sure there are aspects that
+CAN'T be handled without the programmer worrying explicitly about
+compatibility.
+
+When we get to very basic stuff, however, it seems worth trying to
+make things as easy as possible.
+
+Before requiring programmers to use, say, Sget instead of get within
+their code, let's see if we can't at least go nearly all the way with
+a version of get itself.  It may turn out that some examples DO
+require a special function, but allowing those examples to force
+programmers to change all their code is likely to discourage
+participation.
+
+Agreed that this is likely to require more work initially (I just had
+to revise the get function today to match R usage more accurately),
+but if it reduces frustration for larger groups of programmers, it
+should be worth it.
+
+Anyway, the SLanguage package is there for people to play with and, I
+hope, add to.  Let's try a variety of approaches and see what works.
+ 
+By the way, a terminology suggestion: I've tried to use the letter "S"
+by itself to mean something defined for the S language, both R and
+S-Plus.  So I would call the new `unlink' function `Sunlink' (if
+nobody has gotten to that name before), if we needed one.
+
+John
+
+-- 
+John M. Chambers                  jmc at bell-labs.com
+Bell Labs, Lucent Technologies    office: (908)582-2681
+700 Mountain Avenue, Room 2C-282  fax:    (908)582-3340
+Murray Hill, NJ  07974            web: http://www.cs.bell-labs.com/~jmc
+
+

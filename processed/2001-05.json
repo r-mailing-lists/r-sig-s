@@ -1,0 +1,90 @@
+{
+  "list": "r-sig-s",
+  "description": "",
+  "month": "2001-05",
+  "messages": [
+    {
+      "id": "msg-6ab66fa1e7c5",
+      "message_id": "<200105011259.IAA24263@jessie.research.bell-labs.com>",
+      "from_name": "John Chambers",
+      "from_email_hash": "4d7e4bc6ceba427ab0c12dcc5f24506a5eb4948946c46cc3bae5ff41023ea083",
+      "date": "2001-05-01T12:59:57Z",
+      "subject": "[R-S] The SLanguage package",
+      "subject_clean": "[R-S] The SLanguage package",
+      "in_reply_to": null,
+      "references": [
+        "<200104261547.LAA27474@jessie.research.bell-labs.com>",
+        "<3AED90E8.9B8BA86C@bank-banque-canada.ca>",
+        "<200104302027.QAA23833@jessie.research.bell-labs.com>",
+        "<3AEE145B.8D64203B@bank-banque-canada.ca>"
+      ],
+      "body_plain": "> From: Paul Gilbert <pgilbert at bank-banque-canada.ca>\n> CC: r-sig-s at stat.math.ethz.ch\n> Sender: r-sig-s-admin at stat.math.ethz.ch\n> Errors-To: r-sig-s-admin at stat.math.ethz.ch\n> Precedence: bulk\n> List-Help: <mailto:r-sig-s-request at stat.math.ethz.ch?subject=help>\n> List-Post: <mailto:r-sig-s at stat.math.ethz.ch>\n> List-Subscribe: <http://www.stat.math.ethz.ch/mailman/listinfo/r-sig-s>,\n> \t<mailto:r-sig-s-request at stat.math.ethz.ch?subject=subscribe>\n> List-Id: R Special Interest Group on S compatibility <r-sig-s.stat.math.ethz.ch>\n> List-Unsubscribe: <http://www.stat.math.ethz.ch/mailman/listinfo/r-sig-s>,\n> \t<mailto:r-sig-s-request at stat.math.ethz.ch?subject=unsubscribe>\n> List-Archive: <http://www.stat.math.ethz.ch/pipermail/r-sig-s/>\n> Date: Mon, 30 Apr 2001 21:41:48 -0400\n> \n> John\n> \n> >I sympathize, but on the other hand we should try to do as much as\n> >possible to make _most_ cases work easily for the programmer.\n> \n> Having spent a great deal of time tracking down cases that don't work,\n> I'm not so sure that this is a good idea. I like to use functions that\n> are defined with a consistent behaviour in mind and are intended to work\n> the same way all of the time, not just most of the time.  I realize that\n> this is not exactly what you meant to say, but R and S are already\n> fairly compatible at a superficial level so I do not think the audience\n> for a package like SLanguage will be casual users, and programmers will\n> not want to use it if it breaks things that usually work.\n\nWe seem to be operating on different wavelengths, but I think that\nwill be fine, and we can end up with software for both.\n\nIt's all very well to assume that the users are just like me, so I can\nwrite what I need to use.  In fact, that's a valid way of proceeding.\nFor the future, though, this does have to be supplemented if we want\nto draw along a larger part of the overall S language audience.  This\nis a large group and not all of them can afford the time to learn a\ndifferent regimen of programming, at least not until a new generation\nof books and manuals is written :-)\n\nI believe we need two approaches, at least for some of the \"hot spots\"\nin compatibility, such as the approach to the search list:\n\n- software that works as the books describe for most cases, in either\n  implementation (especially if it can optionally warn about cases\n  that are ambiguous);\n\n- alternate software that is part of an unofficial \"standard\" S\n  language and has as consistent a definition as possible.\n\nNotice that complete compatibility is impossible so long as the\nsemantic models differ in certain basic aspects, so compromise will\nalways be with us.\n\n> For most users\n> it is already easy to write compatible code. (It is mainly a question of\n> knowing a few things to avoid.)\n\nHmm, is it?  It would be interesting to hear opinions from other\nsubscribers to this list.  I suspect \"most users\" don't use both systems.  \n\n\n> >Yes, for sure there are aspects that CAN'T be handled without the\n> >programmer worrying explicitly about compatibility.\n> \n> I think there may be two levels of compatibility to worry about. As you\n> point out, things get rather more complicated if one tries to program\n> using environments and language objects. Looking at SLanguage I see that\n> most of the things you are working on are things that have not been an\n> issue for me, mainly because I have avoided them. Perhaps there is a\n> natural way to split this into different pieces.\n> \n> What I am thinking about is a much more simplistic level, where\n> compatibility should not be an issue but it is. At this level many of\n> the problems have to do with the operating system interface rather than\n> R/S language differences. Most of these problems are handled just by\n> using the R function names and defining functions for S (e.g. Platform,\n> Sys.info, Sys.sleep, getwd). In part it is easier to use the R\n> definitions in S because backwards compatibility has not been an issue\n> in R, and these functions have consistent cross platform definitions. In\n> part it is simpler because the names have not been used in S so S/R\n> differences are less of an issue. One case (perhaps the only one) where\n> this does not work is for unlink.\n> \n> >(I just had to revise the get function today to match R usage more\n> >accurately)\n> \n> Yes, the version I downloaded this morning causes problems in my code.\n\nSomething a little more specific would be helpful!  How about\nsubmitting a bug report to http://www.omegahat.org/bugs\n\nBTW, the current version is SLanguage_R_0.1-3.tar.gz, available from\nthe omegahat R package area,\nhttp://www.omegahat.org/download/R/packages/\n--it's usually mirrored on CRAN, but I haven't checked this morning\nyet.  Do try the current version.\n\n> Also, the DESCRIPTION file had some errors (it looked like the package\n> name and version were suppose to be automatically filled in, but\n> weren't) and when you get test code it needs to be in SLanguage/tests\n> not SLanguage/inst/tests or \"R CMD check\" will not run it.\n\nThat doesn't sound up to date.  At any rate, I picked up the version\nmentioned above today, and R CMD check only warned about a missing\nMaintainer field and undocumented objects.\n \n> Paul Gilbert\n> \n> _______________________________________________\n> R-sig-S mailing list\n> R-sig-S at stat.math.ethz.ch\n> http://www.stat.math.ethz.ch/mailman/listinfo/r-sig-s\n> \n\nJohn\n\n-- \nJohn M. Chambers                  jmc at bell-labs.com\nBell Labs, Lucent Technologies    office: (908)582-2681\n700 Mountain Avenue, Room 2C-282  fax:    (908)582-3340\nMurray Hill, NJ  07974            web: http://www.cs.bell-labs.com/~jmc",
+      "body_snippet": "> From: Paul Gilbert <pgilbert at bank-banque-canada.ca>\n> CC: r-sig-s at stat.math.ethz.ch\n> Sender: r-sig-s-admin at stat.math.ethz.ch\n> Errors-To: r-sig-s-admin at stat.math.ethz.ch\n> Precedence: b",
+      "thread_id": "thread-6ab66fa1e7c5",
+      "thread_depth": 0,
+      "month": "2001-05"
+    },
+    {
+      "id": "msg-3d71088d846b",
+      "message_id": "<3AF01CFA.AE549675@bank-banque-canada.ca>",
+      "from_name": "Paul Gilbert",
+      "from_email_hash": "51f348dc0febec9b32e9d9dcb86f6de731958e1295e818209b4c127bffef5569",
+      "date": "2001-05-02T14:43:07Z",
+      "subject": "[R-S] The SLanguage package",
+      "subject_clean": "[R-S] The SLanguage package",
+      "in_reply_to": null,
+      "references": [
+        "<200104261547.LAA27474@jessie.research.bell-labs.com>",
+        "<3AED90E8.9B8BA86C@bank-banque-canada.ca>",
+        "<200104302027.QAA23833@jessie.research.bell-labs.com>",
+        "<3AEE145B.8D64203B@bank-banque-canada.ca>"
+      ],
+      "body_plain": "PG> For most users\nPG> it is already easy to write compatible code. (It is mainly a\nquestion of\nPG> knowing a few things to avoid.)\n\nJC>Hmm, is it?  It would be interesting to hear opinions from other\nJC>subscribers to this list.  I suspect \"most users\" don't use both\nsystems.\n\nJohn\n\nIt would be interesting to hear opinions from other subscribers to this\nlist, but I should qualify what I meant a little bit. I meant \"most\nusers\" in the sense of numbers of users not users that use the languages\nthe most. In my sense I expect most users are beginners, fairly casual\nusers and students. I don't think anyone on this list is in that\ncatagory. Thus I expect most users do not use both systems, but write\ncompatible code by accident rather than by design. This is mainly\nbecause they do not use the languages at the level of the concerns you\nare addressing in SLanguage. If their code does not run in both S and R\nit is more likely because they have used some proprietary Splus\nfunction.\n\nPaul",
+      "body_snippet": "PG> For most users\nPG> it is already easy to write compatible code. (It is mainly a\nquestion of\nPG> knowing a few things to avoid.)\n\nJC>Hmm, is it?  It would be interesting to hear opinions from other",
+      "thread_id": "thread-3d71088d846b",
+      "thread_depth": 0,
+      "month": "2001-05"
+    },
+    {
+      "id": "msg-05b3fdde74f1",
+      "message_id": "<Pine.GSO.4.31.0105021550310.6558-100000@auk.stats>",
+      "from_name": "Prof Brian D Ripley",
+      "from_email_hash": "375ec446f7a1157a4f0268b6dc682d6c2a5b186f57aa61253477aa48159d2329",
+      "date": "2001-05-02T15:00:22Z",
+      "subject": "[R-S] The SLanguage package",
+      "subject_clean": "[R-S] The SLanguage package",
+      "in_reply_to": "<3AF01CFA.AE549675@bank-banque-canada.ca>",
+      "references": [],
+      "body_plain": "On Wed, 2 May 2001, Paul Gilbert wrote:\n\n> PG> For most users\n> PG> it is already easy to write compatible code. (It is mainly a\n> question of\n> PG> knowing a few things to avoid.)\n>\n> JC>Hmm, is it?  It would be interesting to hear opinions from other\n> JC>subscribers to this list.  I suspect \"most users\" don't use both\n> systems.\n>\n> John\n>\n> It would be interesting to hear opinions from other subscribers to this\n> list, but I should qualify what I meant a little bit. I meant \"most\n> users\" in the sense of numbers of users not users that use the languages\n> the most. In my sense I expect most users are beginners, fairly casual\n> users and students. I don't think anyone on this list is in that\n> catagory. Thus I expect most users do not use both systems, but write\n> compatible code by accident rather than by design. This is mainly\n> because they do not use the languages at the level of the concerns you\n> are addressing in SLanguage. If their code does not run in both S and R\n> it is more likely because they have used some proprietary Splus\n> function.\n\nThere appear to be large numbers of students and others who use one system\nat `work' and another at `home'.  At their level, I suspect it is\nfairly easy to write compatible code, but not as easy as it could be.\n\nMy take is that writing compatible code is easier than writing code that\nruns efficiently (in some sense) on multiple systems (and I am not\nsure that S3 vs R is the main issue here, rather than S3 vs S4).\nOften my grad students try two or three systems to see which one\nperforms the best.\n\nBrian\n\n-- \nBrian D. Ripley,                  ripley at stats.ox.ac.uk\nProfessor of Applied Statistics,  http://www.stats.ox.ac.uk/~ripley/\nUniversity of Oxford,             Tel:  +44 1865 272861 (self)\n1 South Parks Road,                     +44 1865 272860 (secr)\nOxford OX1 3TG, UK                Fax:  +44 1865 272595",
+      "body_snippet": "On Wed, 2 May 2001, Paul Gilbert wrote:\n\n> PG> For most users\n> PG> it is already easy to write compatible code. (It is mainly a\n> question of\n> PG> knowing a few things to avoid.)\n>\n> JC>Hmm, is it? ",
+      "thread_id": "thread-3d71088d846b",
+      "thread_depth": 1,
+      "month": "2001-05"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-6ab66fa1e7c5",
+      "subject": "[R-S] The SLanguage package",
+      "message_count": 1,
+      "participants": [
+        "John Chambers"
+      ],
+      "started": "2001-05-01T12:59:57Z",
+      "last_reply": "2001-05-01T12:59:57Z",
+      "root_message_id": "msg-6ab66fa1e7c5"
+    },
+    {
+      "id": "thread-3d71088d846b",
+      "subject": "[R-S] The SLanguage package",
+      "message_count": 2,
+      "participants": [
+        "Paul Gilbert",
+        "Prof Brian D Ripley"
+      ],
+      "started": "2001-05-02T14:43:07Z",
+      "last_reply": "2001-05-02T15:00:22Z",
+      "root_message_id": "msg-3d71088d846b"
+    }
+  ]
+}

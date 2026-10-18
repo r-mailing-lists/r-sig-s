@@ -1,0 +1,274 @@
+From pgilbert at bank-banque-canada.ca  Tue May  1 03:41:48 2001
+From: pgilbert at bank-banque-canada.ca (Paul Gilbert)
+Date: Mon, 30 Apr 2001 21:41:48 -0400
+Subject: [R-S] The SLanguage package
+References: <200104261547.LAA27474@jessie.research.bell-labs.com> <3AED90E8.9B8BA86C@bank-banque-canada.ca> <200104302027.QAA23833@jessie.research.bell-labs.com>
+Message-ID: <3AEE145B.8D64203B@bank-banque-canada.ca>
+
+John
+
+>I sympathize, but on the other hand we should try to do as much as
+>possible to make _most_ cases work easily for the programmer.
+
+Having spent a great deal of time tracking down cases that don't work,
+I'm not so sure that this is a good idea. I like to use functions that
+are defined with a consistent behaviour in mind and are intended to work
+the same way all of the time, not just most of the time.  I realize that
+this is not exactly what you meant to say, but R and S are already
+fairly compatible at a superficial level so I do not think the audience
+for a package like SLanguage will be casual users, and programmers will
+not want to use it if it breaks things that usually work. For most users
+it is already easy to write compatible code. (It is mainly a question of
+knowing a few things to avoid.)
+
+>Yes, for sure there are aspects that CAN'T be handled without the
+>programmer worrying explicitly about compatibility.
+
+I think there may be two levels of compatibility to worry about. As you
+point out, things get rather more complicated if one tries to program
+using environments and language objects. Looking at SLanguage I see that
+most of the things you are working on are things that have not been an
+issue for me, mainly because I have avoided them. Perhaps there is a
+natural way to split this into different pieces.
+
+What I am thinking about is a much more simplistic level, where
+compatibility should not be an issue but it is. At this level many of
+the problems have to do with the operating system interface rather than
+R/S language differences. Most of these problems are handled just by
+using the R function names and defining functions for S (e.g. Platform,
+Sys.info, Sys.sleep, getwd). In part it is easier to use the R
+definitions in S because backwards compatibility has not been an issue
+in R, and these functions have consistent cross platform definitions. In
+part it is simpler because the names have not been used in S so S/R
+differences are less of an issue. One case (perhaps the only one) where
+this does not work is for unlink.
+
+>(I just had to revise the get function today to match R usage more
+>accurately)
+
+Yes, the version I downloaded this morning causes problems in my code.
+Also, the DESCRIPTION file had some errors (it looked like the package
+name and version were suppose to be automatically filled in, but
+weren't) and when you get test code it needs to be in SLanguage/tests
+not SLanguage/inst/tests or "R CMD check" will not run it.
+
+Paul Gilbert
+
+
+
+From jmc at research.bell-labs.com  Tue May  1 14:59:57 2001
+From: jmc at research.bell-labs.com (John Chambers)
+Date: Tue, 1 May 2001 08:59:57 -0400 (EDT)
+Subject: [R-S] The SLanguage package
+References: <200104261547.LAA27474@jessie.research.bell-labs.com> <3AED90E8.9B8BA86C@bank-banque-canada.ca> <200104302027.QAA23833@jessie.research.bell-labs.com> <3AEE145B.8D64203B@bank-banque-canada.ca>
+Message-ID: <200105011259.IAA24263@jessie.research.bell-labs.com>
+
+> From: Paul Gilbert <pgilbert at bank-banque-canada.ca>
+> CC: r-sig-s at stat.math.ethz.ch
+> Sender: r-sig-s-admin at stat.math.ethz.ch
+> Errors-To: r-sig-s-admin at stat.math.ethz.ch
+> Precedence: bulk
+> List-Help: <mailto:r-sig-s-request at stat.math.ethz.ch?subject=help>
+> List-Post: <mailto:r-sig-s at stat.math.ethz.ch>
+> List-Subscribe: <http://www.stat.math.ethz.ch/mailman/listinfo/r-sig-s>,
+> 	<mailto:r-sig-s-request at stat.math.ethz.ch?subject=subscribe>
+> List-Id: R Special Interest Group on S compatibility <r-sig-s.stat.math.ethz.ch>
+> List-Unsubscribe: <http://www.stat.math.ethz.ch/mailman/listinfo/r-sig-s>,
+> 	<mailto:r-sig-s-request at stat.math.ethz.ch?subject=unsubscribe>
+> List-Archive: <http://www.stat.math.ethz.ch/pipermail/r-sig-s/>
+> Date: Mon, 30 Apr 2001 21:41:48 -0400
+> 
+> John
+> 
+> >I sympathize, but on the other hand we should try to do as much as
+> >possible to make _most_ cases work easily for the programmer.
+> 
+> Having spent a great deal of time tracking down cases that don't work,
+> I'm not so sure that this is a good idea. I like to use functions that
+> are defined with a consistent behaviour in mind and are intended to work
+> the same way all of the time, not just most of the time.  I realize that
+> this is not exactly what you meant to say, but R and S are already
+> fairly compatible at a superficial level so I do not think the audience
+> for a package like SLanguage will be casual users, and programmers will
+> not want to use it if it breaks things that usually work.
+
+We seem to be operating on different wavelengths, but I think that
+will be fine, and we can end up with software for both.
+
+It's all very well to assume that the users are just like me, so I can
+write what I need to use.  In fact, that's a valid way of proceeding.
+For the future, though, this does have to be supplemented if we want
+to draw along a larger part of the overall S language audience.  This
+is a large group and not all of them can afford the time to learn a
+different regimen of programming, at least not until a new generation
+of books and manuals is written :-)
+
+I believe we need two approaches, at least for some of the "hot spots"
+in compatibility, such as the approach to the search list:
+
+- software that works as the books describe for most cases, in either
+  implementation (especially if it can optionally warn about cases
+  that are ambiguous);
+
+- alternate software that is part of an unofficial "standard" S
+  language and has as consistent a definition as possible.
+
+Notice that complete compatibility is impossible so long as the
+semantic models differ in certain basic aspects, so compromise will
+always be with us.
+
+> For most users
+> it is already easy to write compatible code. (It is mainly a question of
+> knowing a few things to avoid.)
+
+Hmm, is it?  It would be interesting to hear opinions from other
+subscribers to this list.  I suspect "most users" don't use both systems.  
+
+
+> >Yes, for sure there are aspects that CAN'T be handled without the
+> >programmer worrying explicitly about compatibility.
+> 
+> I think there may be two levels of compatibility to worry about. As you
+> point out, things get rather more complicated if one tries to program
+> using environments and language objects. Looking at SLanguage I see that
+> most of the things you are working on are things that have not been an
+> issue for me, mainly because I have avoided them. Perhaps there is a
+> natural way to split this into different pieces.
+> 
+> What I am thinking about is a much more simplistic level, where
+> compatibility should not be an issue but it is. At this level many of
+> the problems have to do with the operating system interface rather than
+> R/S language differences. Most of these problems are handled just by
+> using the R function names and defining functions for S (e.g. Platform,
+> Sys.info, Sys.sleep, getwd). In part it is easier to use the R
+> definitions in S because backwards compatibility has not been an issue
+> in R, and these functions have consistent cross platform definitions. In
+> part it is simpler because the names have not been used in S so S/R
+> differences are less of an issue. One case (perhaps the only one) where
+> this does not work is for unlink.
+> 
+> >(I just had to revise the get function today to match R usage more
+> >accurately)
+> 
+> Yes, the version I downloaded this morning causes problems in my code.
+
+Something a little more specific would be helpful!  How about
+submitting a bug report to http://www.omegahat.org/bugs
+
+BTW, the current version is SLanguage_R_0.1-3.tar.gz, available from
+the omegahat R package area,
+http://www.omegahat.org/download/R/packages/
+--it's usually mirrored on CRAN, but I haven't checked this morning
+yet.  Do try the current version.
+
+> Also, the DESCRIPTION file had some errors (it looked like the package
+> name and version were suppose to be automatically filled in, but
+> weren't) and when you get test code it needs to be in SLanguage/tests
+> not SLanguage/inst/tests or "R CMD check" will not run it.
+
+That doesn't sound up to date.  At any rate, I picked up the version
+mentioned above today, and R CMD check only warned about a missing
+Maintainer field and undocumented objects.
+ 
+> Paul Gilbert
+> 
+> _______________________________________________
+> R-sig-S mailing list
+> R-sig-S at stat.math.ethz.ch
+> http://www.stat.math.ethz.ch/mailman/listinfo/r-sig-s
+> 
+
+John
+
+-- 
+John M. Chambers                  jmc at bell-labs.com
+Bell Labs, Lucent Technologies    office: (908)582-2681
+700 Mountain Avenue, Room 2C-282  fax:    (908)582-3340
+Murray Hill, NJ  07974            web: http://www.cs.bell-labs.com/~jmc
+
+
+From pgilbert at bank-banque-canada.ca  Wed May  2 16:43:07 2001
+From: pgilbert at bank-banque-canada.ca (Paul Gilbert)
+Date: Wed, 02 May 2001 10:43:07 -0400
+Subject: [R-S] The SLanguage package
+References: <200104261547.LAA27474@jessie.research.bell-labs.com> <3AED90E8.9B8BA86C@bank-banque-canada.ca> <200104302027.QAA23833@jessie.research.bell-labs.com> <3AEE145B.8D64203B@bank-banque-canada.ca> <200105011259.IAA24263@jessie.research.bell-labs.co
+Message-ID: <3AF01CFA.AE549675@bank-banque-canada.ca>
+
+PG> For most users
+PG> it is already easy to write compatible code. (It is mainly a
+question of
+PG> knowing a few things to avoid.)
+
+JC>Hmm, is it?  It would be interesting to hear opinions from other
+JC>subscribers to this list.  I suspect "most users" don't use both
+systems.
+
+John
+
+It would be interesting to hear opinions from other subscribers to this
+list, but I should qualify what I meant a little bit. I meant "most
+users" in the sense of numbers of users not users that use the languages
+the most. In my sense I expect most users are beginners, fairly casual
+users and students. I don't think anyone on this list is in that
+catagory. Thus I expect most users do not use both systems, but write
+compatible code by accident rather than by design. This is mainly
+because they do not use the languages at the level of the concerns you
+are addressing in SLanguage. If their code does not run in both S and R
+it is more likely because they have used some proprietary Splus
+function.
+
+Paul
+
+
+
+From ripley at stats.ox.ac.uk  Wed May  2 17:00:22 2001
+From: ripley at stats.ox.ac.uk (Prof Brian D Ripley)
+Date: Wed, 2 May 2001 16:00:22 +0100 (BST)
+Subject: [R-S] The SLanguage package
+In-Reply-To: <3AF01CFA.AE549675@bank-banque-canada.ca>
+Message-ID: <Pine.GSO.4.31.0105021550310.6558-100000@auk.stats>
+
+On Wed, 2 May 2001, Paul Gilbert wrote:
+
+> PG> For most users
+> PG> it is already easy to write compatible code. (It is mainly a
+> question of
+> PG> knowing a few things to avoid.)
+>
+> JC>Hmm, is it?  It would be interesting to hear opinions from other
+> JC>subscribers to this list.  I suspect "most users" don't use both
+> systems.
+>
+> John
+>
+> It would be interesting to hear opinions from other subscribers to this
+> list, but I should qualify what I meant a little bit. I meant "most
+> users" in the sense of numbers of users not users that use the languages
+> the most. In my sense I expect most users are beginners, fairly casual
+> users and students. I don't think anyone on this list is in that
+> catagory. Thus I expect most users do not use both systems, but write
+> compatible code by accident rather than by design. This is mainly
+> because they do not use the languages at the level of the concerns you
+> are addressing in SLanguage. If their code does not run in both S and R
+> it is more likely because they have used some proprietary Splus
+> function.
+
+There appear to be large numbers of students and others who use one system
+at `work' and another at `home'.  At their level, I suspect it is
+fairly easy to write compatible code, but not as easy as it could be.
+
+My take is that writing compatible code is easier than writing code that
+runs efficiently (in some sense) on multiple systems (and I am not
+sure that S3 vs R is the main issue here, rather than S3 vs S4).
+Often my grad students try two or three systems to see which one
+performs the best.
+
+Brian
+
+-- 
+Brian D. Ripley,                  ripley at stats.ox.ac.uk
+Professor of Applied Statistics,  http://www.stats.ox.ac.uk/~ripley/
+University of Oxford,             Tel:  +44 1865 272861 (self)
+1 South Parks Road,                     +44 1865 272860 (secr)
+Oxford OX1 3TG, UK                Fax:  +44 1865 272595
+

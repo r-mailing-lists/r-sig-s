@@ -1,0 +1,90 @@
+{
+  "list": "r-sig-s",
+  "description": "",
+  "month": "2011-02",
+  "messages": [
+    {
+      "id": "msg-3d5243562916",
+      "message_id": "<DA0B5B50-FE7C-490A-AD9D-9C5FFBABBDAF@gmx.com>",
+      "from_name": "Natalie Wood",
+      "from_email_hash": "573de48880a75935556262f26987c918d76619bdf3e80f51bacded990a342ac3",
+      "date": "2011-02-03T18:34:01Z",
+      "subject": "[R-S] Herbal remedies ed",
+      "subject_clean": "[R-S] Herbal remedies ed",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "An embedded and charset-unspecified text was scrubbed...\nName: not available\nURL: <https://stat.ethz.ch/pipermail/r-sig-s/attachments/20110203/5b066549/attachment.pl>",
+      "body_snippet": "An embedded and charset-unspecified text was scrubbed...\nName: not available\nURL: <https://stat.ethz.ch/pipermail/r-sig-s/attachments/20110203/5b066549/attachment.pl>",
+      "thread_id": "thread-3d5243562916",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-7e149311da14",
+      "message_id": "<631494B0-2770-4EEB-91D4-3D6136B0E3C2@gmx.com>",
+      "from_name": "Allison Price",
+      "from_email_hash": "573de48880a75935556262f26987c918d76619bdf3e80f51bacded990a342ac3",
+      "date": "2011-02-22T18:34:05Z",
+      "subject": "[R-S] 60 mg prednisone daily",
+      "subject_clean": "[R-S] 60 mg prednisone daily",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "An embedded and charset-unspecified text was scrubbed...\nName: not available\nURL: <https://stat.ethz.ch/pipermail/r-sig-s/attachments/20110222/f966bbf4/attachment.pl>",
+      "body_snippet": "An embedded and charset-unspecified text was scrubbed...\nName: not available\nURL: <https://stat.ethz.ch/pipermail/r-sig-s/attachments/20110222/f966bbf4/attachment.pl>",
+      "thread_id": "thread-7e149311da14",
+      "thread_depth": 0,
+      "month": "2011-02"
+    },
+    {
+      "id": "msg-71738e07214a",
+      "message_id": "<324DB47E-6A89-4A77-874D-06717E237BA5@gmx.com>",
+      "from_name": "Brandon Martinez",
+      "from_email_hash": "573de48880a75935556262f26987c918d76619bdf3e80f51bacded990a342ac3",
+      "date": "2011-02-28T11:04:06Z",
+      "subject": "[R-S] Hood hair dryer finasteride",
+      "subject_clean": "[R-S] Hood hair dryer finasteride",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "An embedded and charset-unspecified text was scrubbed...\nName: not available\nURL: <https://stat.ethz.ch/pipermail/r-sig-s/attachments/20110228/1c9262d3/attachment.pl>",
+      "body_snippet": "An embedded and charset-unspecified text was scrubbed...\nName: not available\nURL: <https://stat.ethz.ch/pipermail/r-sig-s/attachments/20110228/1c9262d3/attachment.pl>",
+      "thread_id": "thread-71738e07214a",
+      "thread_depth": 0,
+      "month": "2011-02"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-3d5243562916",
+      "subject": "[R-S] Herbal remedies ed",
+      "message_count": 1,
+      "participants": [
+        "Natalie Wood"
+      ],
+      "started": "2011-02-03T18:34:01Z",
+      "last_reply": "2011-02-03T18:34:01Z",
+      "root_message_id": "msg-3d5243562916"
+    },
+    {
+      "id": "thread-7e149311da14",
+      "subject": "[R-S] 60 mg prednisone daily",
+      "message_count": 1,
+      "participants": [
+        "Allison Price"
+      ],
+      "started": "2011-02-22T18:34:05Z",
+      "last_reply": "2011-02-22T18:34:05Z",
+      "root_message_id": "msg-7e149311da14"
+    },
+    {
+      "id": "thread-71738e07214a",
+      "subject": "[R-S] Hood hair dryer finasteride",
+      "message_count": 1,
+      "participants": [
+        "Brandon Martinez"
+      ],
+      "started": "2011-02-28T11:04:06Z",
+      "last_reply": "2011-02-28T11:04:06Z",
+      "root_message_id": "msg-71738e07214a"
+    }
+  ]
+}

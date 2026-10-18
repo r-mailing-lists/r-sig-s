@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Addison Bell",
+    "slug": "addison-bell",
+    "emailHash": "573de48880a75935556262f26987c918d76619bdf3e80f51bacded990a342ac3",
+    "messageCount": 16,
+    "firstDate": "2011-01-12T05:04:02Z",
+    "lastDate": "2011-03-15T23:04:03Z",
+    "yearlyActivity": {
+      "2011": 16
+    }
+  },
+  {
+    "name": "Paul Gilbert",
+    "slug": "paul-gilbert",
+    "emailHash": "29fea860e182a01f3e4160bbdef3ad0b7144bad40faef12022989132ed8ec2b1",
+    "messageCount": 4,
+    "firstDate": "2001-04-25T18:19:22Z",
+    "lastDate": "2001-05-02T14:43:07Z",
+    "yearlyActivity": {
+      "2001": 4
+    }
+  },
+  {
+    "name": "John Chambers",
+    "slug": "john-chambers",
+    "emailHash": "07ce409e62c6fa8a42409d100cd19d8b5f4308ae065b786c7a703624eacfc072",
+    "messageCount": 3,
+    "firstDate": "2001-04-26T15:47:46Z",
+    "lastDate": "2001-05-01T12:59:57Z",
+    "yearlyActivity": {
+      "2001": 3
+    }
+  },
+  {
+    "name": "Martin Maechler",
+    "slug": "martin-maechler",
+    "emailHash": "08b80bef15e2ed5825d254f60485cdcaa758ceab7e5763da8b9597d47c08eaa5",
+    "messageCount": 1,
+    "firstDate": "2001-04-25T16:06:19Z",
+    "lastDate": "2001-04-25T16:06:19Z",
+    "yearlyActivity": {
+      "2001": 1
+    }
+  },
+  {
+    "name": "Brian Ripley",
+    "slug": "brian-ripley",
+    "emailHash": "3286dbf5012aca84a365fecf5d1ec8884394c55dfa0369f94d45f497aa038b47",
+    "messageCount": 1,
+    "firstDate": "2001-05-02T15:00:22Z",
+    "lastDate": "2001-05-02T15:00:22Z",
+    "yearlyActivity": {
+      "2001": 1
+    }
+  }
+]

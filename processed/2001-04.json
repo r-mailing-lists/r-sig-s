@@ -1,0 +1,148 @@
+{
+  "list": "r-sig-s",
+  "description": "",
+  "month": "2001-04",
+  "messages": [
+    {
+      "id": "msg-7b66d1f9c2ab",
+      "message_id": "<15078.62971.672948.80335@gargle.gargle.HOWL>",
+      "from_name": "Martin Maechler",
+      "from_email_hash": "c2c86f22f78a4ecfe6d0e6b4e2be505a3f5beb0470ea88c903688ac536018a98",
+      "date": "2001-04-25T16:06:19Z",
+      "subject": "[R-S] Must read: ``RSMethods''",
+      "subject_clean": "[R-S] Must read: ``RSMethods''",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "[This message is just an excuse to put something useful into the\n        mailing list archive such that you don't get an error when looking\n        for the archive..]\n\nI think a `must read' for all of us is the information found\nat  http://www.omegahat.org/RSMethods/\n\n>>   S Language Methods and Classes\n>> \n>>   Overview\n>> \n>>   This package provides software for R that implements S-language formal\n>>   classes and methods. Software written using this package can work\n>>   compatibly in R or in current versions of S-Plus.\n\nby John Chambers himself.\n\nMartin",
+      "body_snippet": "[This message is just an excuse to put something useful into the\n        mailing list archive such that you don't get an error when looking\n        for the archive..]\n\nI think a `must read' for all of",
+      "thread_id": "thread-7b66d1f9c2ab",
+      "thread_depth": 0,
+      "month": "2001-04"
+    },
+    {
+      "id": "msg-52a137f8525c",
+      "message_id": "<3AE7152A.7FF87A9D@bank-banque-canada.ca>",
+      "from_name": "Paul Gilbert",
+      "from_email_hash": "51f348dc0febec9b32e9d9dcb86f6de731958e1295e818209b4c127bffef5569",
+      "date": "2001-04-25T18:19:22Z",
+      "subject": "[R-S] S/R neutral",
+      "subject_clean": "[R-S] S/R neutral",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": ">I think it would be very useful to have one or more documents\n>clearly describing the differences and techniques for writing\n>implementation-neutral S code. For instance, a document, say a HOWTO,\n>describing techniques for ...\n\nBefore writing documentation I think it would be good to work out a\nreasonable common strategy for supporting \"neutral\" code. After several\nyears of making my S (Splus 3.3) code work also in R I have just\nconverted to making my R code work also in S. I did this conversion\nmainly because of the package support in R. The mechanisms for checking\ndocumentation and running tests are very useful. In S I mimic R by using\nsome scripts to run tests in the tests directory, but I have not tried\nto integrate the help with any newer Splus help systems.\n\nI find making \"R code work also in Splus\" to be much cleaner in several\nrespects than making \"Splus code work also in R.\" I think this is\nbecause it seems reasonable to tell R users to upgrade, while backwards\ncompatability is more of an issue in Splus (perhaps especially for me\nsince I have not converted to using the newer classes and methods in S).\n\nThere are many more detailed issues, but I think everyone could benefit\nfrom a common general strategy, so perhaps we could try to work that out\nfirst.\n\nPaul Gilbert",
+      "body_snippet": ">I think it would be very useful to have one or more documents\n>clearly describing the differences and techniques for writing\n>implementation-neutral S code. For instance, a document, say a HOWTO,\n>de",
+      "thread_id": "thread-52a137f8525c",
+      "thread_depth": 0,
+      "month": "2001-04"
+    },
+    {
+      "id": "msg-6c8204eeeddc",
+      "message_id": "<200104261547.LAA27474@jessie.research.bell-labs.com>",
+      "from_name": "John Chambers",
+      "from_email_hash": "4d7e4bc6ceba427ab0c12dcc5f24506a5eb4948946c46cc3bae5ff41023ea083",
+      "date": "2001-04-26T15:47:46Z",
+      "subject": "[R-S] The SLanguage package",
+      "subject_clean": "[R-S] The SLanguage package",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "This package, part of the Omegahat software, is a first cut at\nproviding tools to help write compatible S language software.\n\nWhat exists currently are R and S-plus versions of a package/library\nwith some functions designed to smooth over a few of the\ninconsistencies (e.g., different argument names) and patch a few holes\n(facilities defined in one implementation but not in the other).\n\nThe versions currently available are definitely early, trying to\nsuggest that this is a useful exercise but not at all implying any\nfinal decisions.  An overview and tar archives are available at\n  http://www.omegahat.org/SLanguage/\n\nThe web documentation says a little about the underlying strategy.\n\nSeveral areas are in process but not yet included:\n\n-  C programming tools (e.g., header files) to bridge some of the\n   incompatibilities at the C level.\n\n-  documentation tools.  Mainly this will use the work on XML-based\n   documentation going on in parallel.\n\n-  tools for organizing compatible packages.  This will help\n   programmers get started with their own packages, such that they can\n   maintain compatible source and generate copies of their package for\n   both S-Plus and R.  \n\nThe material now available is too incomplete to recommend to general\nusers, but readers of r-sig-s might find it worth looking at.  In any\ncase, comments and suggestions are very much needed.\n\nJohn\n\n-- \nJohn M. Chambers                  jmc at bell-labs.com\nBell Labs, Lucent Technologies    office: (908)582-2681\n700 Mountain Avenue, Room 2C-282  fax:    (908)582-3340\nMurray Hill, NJ  07974            web: http://www.cs.bell-labs.com/~jmc",
+      "body_snippet": "This package, part of the Omegahat software, is a first cut at\nproviding tools to help write compatible S language software.\n\nWhat exists currently are R and S-plus versions of a package/library\nwith ",
+      "thread_id": "thread-6c8204eeeddc",
+      "thread_depth": 0,
+      "month": "2001-04"
+    },
+    {
+      "id": "msg-5fe96a29c8c1",
+      "message_id": "<3AED90E8.9B8BA86C@bank-banque-canada.ca>",
+      "from_name": "Paul Gilbert",
+      "from_email_hash": "51f348dc0febec9b32e9d9dcb86f6de731958e1295e818209b4c127bffef5569",
+      "date": "2001-04-30T16:20:56Z",
+      "subject": "[R-S] The SLanguage package",
+      "subject_clean": "[R-S] The SLanguage package",
+      "in_reply_to": null,
+      "references": [
+        "<200104261547.LAA27474@jessie.research.bell-labs.com>"
+      ],
+      "body_plain": "John\n\nI have never had very good luck redefining functions in order to resolve\ninconsistencies between various versions of R and S, as you do in\nSLanguage (e.g. get, exists).  First, it is difficult to tests all the\nvariants on all the different platforms to make sure something has not\nbeen broken, and second, future versions always have a habit of changing\nsomething which makes maintenance very difficult. Instead, it seems\nbetter to define a new function which has a consistent behaviour.\n\nFor example, unlink() has a different behaviour with directories in\ndifferent versions of Splus. R has added the argument recursive=FALSE.\nIt is possible to redefine unlink in Splus to support the recursive\nargument, but the default behaviour will then be changed in some\nversions of Splus and something is certain to break. Instead, it seems\nbetter to defined a new function (maybe SRunlink) which has a consistent\nbehaviour and can be use instead of unlink in other code.\n\nThis implies that users of these tools will be designing their code to\nrun in both S and R, rather than simply porting in the simplest possible\nmanner, but in the end I think this distinction will be necessary\nanyway.\n\nPaul Gilbert",
+      "body_snippet": "John\n\nI have never had very good luck redefining functions in order to resolve\ninconsistencies between various versions of R and S, as you do in\nSLanguage (e.g. get, exists).  First, it is difficult t",
+      "thread_id": "thread-6c8204eeeddc",
+      "thread_depth": 1,
+      "month": "2001-04"
+    },
+    {
+      "id": "msg-97309fca4490",
+      "message_id": "<200104302027.QAA23833@jessie.research.bell-labs.com>",
+      "from_name": "John Chambers",
+      "from_email_hash": "4d7e4bc6ceba427ab0c12dcc5f24506a5eb4948946c46cc3bae5ff41023ea083",
+      "date": "2001-04-30T20:27:16Z",
+      "subject": "[R-S] The SLanguage package",
+      "subject_clean": "[R-S] The SLanguage package",
+      "in_reply_to": null,
+      "references": [
+        "<200104261547.LAA27474@jessie.research.bell-labs.com>",
+        "<3AED90E8.9B8BA86C@bank-banque-canada.ca>"
+      ],
+      "body_plain": "> From: Paul Gilbert <pgilbert at bank-banque-canada.ca>\n> Date: Mon, 30 Apr 2001 12:20:56 -0400\n> \n> John\n> \n> I have never had very good luck redefining functions in order to resolve\n> inconsistencies between various versions of R and S, as you do in\n> SLanguage (e.g. get, exists).  First, it is difficult to tests all the\n> variants on all the different platforms to make sure something has not\n> been broken, and second, future versions always have a habit of changing\n> something which makes maintenance very difficult. Instead, it seems\n> better to define a new function which has a consistent behaviour.\n>\n> For example, unlink() has a different behaviour with directories in\n> different versions of Splus. R has added the argument recursive=FALSE.\n> It is possible to redefine unlink in Splus to support the recursive\n> argument, but the default behaviour will then be changed in some\n> versions of Splus and something is certain to break. Instead, it seems\n> better to defined a new function (maybe SRunlink) which has a consistent\n> behaviour and can be use instead of unlink in other code.\n>\n> This implies that users of these tools will be designing their code to\n> run in both S and R, rather than simply porting in the simplest possible\n> manner, but in the end I think this distinction will be necessary\n> anyway.\n> \n> Paul Gilbert\n> \n> _______________________________________________\n> R-sig-S mailing list\n> R-sig-S at stat.math.ethz.ch\n> http://www.stat.math.ethz.ch/mailman/listinfo/r-sig-s\n> \n\nI sympathize, but on the other hand we should try to do as much as\npossible to make _most_ cases work easily for the programmer.\n\nThe bottom line is that we don't want just a few, super-industrious\npeople to write compatible code.  Yes, for sure there are aspects that\nCAN'T be handled without the programmer worrying explicitly about\ncompatibility.\n\nWhen we get to very basic stuff, however, it seems worth trying to\nmake things as easy as possible.\n\nBefore requiring programmers to use, say, Sget instead of get within\ntheir code, let's see if we can't at least go nearly all the way with\na version of get itself.  It may turn out that some examples DO\nrequire a special function, but allowing those examples to force\nprogrammers to change all their code is likely to discourage\nparticipation.\n\nAgreed that this is likely to require more work initially (I just had\nto revise the get function today to match R usage more accurately),\nbut if it reduces frustration for larger groups of programmers, it\nshould be worth it.\n\nAnyway, the SLanguage package is there for people to play with and, I\nhope, add to.  Let's try a variety of approaches and see what works.\n \nBy the way, a terminology suggestion: I've tried to use the letter \"S\"\nby itself to mean something defined for the S language, both R and\nS-Plus.  So I would call the new `unlink' function `Sunlink' (if\nnobody has gotten to that name before), if we needed one.\n\nJohn\n\n-- \nJohn M. Chambers                  jmc at bell-labs.com\nBell Labs, Lucent Technologies    office: (908)582-2681\n700 Mountain Avenue, Room 2C-282  fax:    (908)582-3340\nMurray Hill, NJ  07974            web: http://www.cs.bell-labs.com/~jmc",
+      "body_snippet": "> From: Paul Gilbert <pgilbert at bank-banque-canada.ca>\n> Date: Mon, 30 Apr 2001 12:20:56 -0400\n> \n> John\n> \n> I have never had very good luck redefining functions in order to resolve\n> inconsistenci",
+      "thread_id": "thread-6c8204eeeddc",
+      "thread_depth": 2,
+      "month": "2001-04"
+    },
+    {
+      "id": "msg-5b5467a1735c",
+      "message_id": "<3AEE145B.8D64203B@bank-banque-canada.ca>",
+      "from_name": "Paul Gilbert",
+      "from_email_hash": "51f348dc0febec9b32e9d9dcb86f6de731958e1295e818209b4c127bffef5569",
+      "date": "2001-05-01T01:41:48Z",
+      "subject": "[R-S] The SLanguage package",
+      "subject_clean": "[R-S] The SLanguage package",
+      "in_reply_to": null,
+      "references": [
+        "<200104261547.LAA27474@jessie.research.bell-labs.com>",
+        "<3AED90E8.9B8BA86C@bank-banque-canada.ca>",
+        "<200104302027.QAA23833@jessie.research.bell-labs.com>"
+      ],
+      "body_plain": "John\n\n>I sympathize, but on the other hand we should try to do as much as\n>possible to make _most_ cases work easily for the programmer.\n\nHaving spent a great deal of time tracking down cases that don't work,\nI'm not so sure that this is a good idea. I like to use functions that\nare defined with a consistent behaviour in mind and are intended to work\nthe same way all of the time, not just most of the time.  I realize that\nthis is not exactly what you meant to say, but R and S are already\nfairly compatible at a superficial level so I do not think the audience\nfor a package like SLanguage will be casual users, and programmers will\nnot want to use it if it breaks things that usually work. For most users\nit is already easy to write compatible code. (It is mainly a question of\nknowing a few things to avoid.)\n\n>Yes, for sure there are aspects that CAN'T be handled without the\n>programmer worrying explicitly about compatibility.\n\nI think there may be two levels of compatibility to worry about. As you\npoint out, things get rather more complicated if one tries to program\nusing environments and language objects. Looking at SLanguage I see that\nmost of the things you are working on are things that have not been an\nissue for me, mainly because I have avoided them. Perhaps there is a\nnatural way to split this into different pieces.\n\nWhat I am thinking about is a much more simplistic level, where\ncompatibility should not be an issue but it is. At this level many of\nthe problems have to do with the operating system interface rather than\nR/S language differences. Most of these problems are handled just by\nusing the R function names and defining functions for S (e.g. Platform,\nSys.info, Sys.sleep, getwd). In part it is easier to use the R\ndefinitions in S because backwards compatibility has not been an issue\nin R, and these functions have consistent cross platform definitions. In\npart it is simpler because the names have not been used in S so S/R\ndifferences are less of an issue. One case (perhaps the only one) where\nthis does not work is for unlink.\n\n>(I just had to revise the get function today to match R usage more\n>accurately)\n\nYes, the version I downloaded this morning causes problems in my code.\nAlso, the DESCRIPTION file had some errors (it looked like the package\nname and version were suppose to be automatically filled in, but\nweren't) and when you get test code it needs to be in SLanguage/tests\nnot SLanguage/inst/tests or \"R CMD check\" will not run it.\n\nPaul Gilbert",
+      "body_snippet": "John\n\n>I sympathize, but on the other hand we should try to do as much as\n>possible to make _most_ cases work easily for the programmer.\n\nHaving spent a great deal of time tracking down cases that don",
+      "thread_id": "thread-6c8204eeeddc",
+      "thread_depth": 3,
+      "month": "2001-04"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-7b66d1f9c2ab",
+      "subject": "[R-S] Must read: ``RSMethods''",
+      "message_count": 1,
+      "participants": [
+        "Martin Maechler"
+      ],
+      "started": "2001-04-25T16:06:19Z",
+      "last_reply": "2001-04-25T16:06:19Z",
+      "root_message_id": "msg-7b66d1f9c2ab"
+    },
+    {
+      "id": "thread-52a137f8525c",
+      "subject": "[R-S] S/R neutral",
+      "message_count": 1,
+      "participants": [
+        "Paul Gilbert"
+      ],
+      "started": "2001-04-25T18:19:22Z",
+      "last_reply": "2001-04-25T18:19:22Z",
+      "root_message_id": "msg-52a137f8525c"
+    },
+    {
+      "id": "thread-6c8204eeeddc",
+      "subject": "[R-S] The SLanguage package",
+      "message_count": 4,
+      "participants": [
+        "John Chambers",
+        "Paul Gilbert"
+      ],
+      "started": "2001-04-26T15:47:46Z",
+      "last_reply": "2001-05-01T01:41:48Z",
+      "root_message_id": "msg-6c8204eeeddc"
+    }
+  ]
+}
