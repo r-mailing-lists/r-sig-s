@@ -12,4 +12,4 @@ Automated mbox archive. Updated daily via GitHub Actions.
 
 ## Viewer
 
-This list is not shown on [r-mailing-lists.thecoatlessprofessor.com](https://r-mailing-lists.thecoatlessprofessor.com/): apart from nine messages from 2001, its archive holds only spam.
+This list is not shown on [archives.rstats.dev](https://archives.rstats.dev/): apart from nine messages from 2001, its archive holds only spam.
